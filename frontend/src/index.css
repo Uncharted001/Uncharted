@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface dark:bg-deep-indigo dark:text-surface-white;
+  }
+}
+
+@layer utilities {
+  .sunrise-gradient {
+    background: linear-gradient(135deg, #FF7F50 0%, #FFBF00 100%);
+  }
+  
+  .sunrise-shadow {
+    box-shadow: 0 10px 25px -5px rgba(255, 127, 80, 0.4);
+  }
+
+  .deep-shadow {
+    box-shadow: 0 20px 40px -15px rgba(26, 26, 64, 0.15);
+  }
+
+  .dark .deep-shadow {
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Custom Floating Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(8deg);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-5deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 5s ease-in-out infinite;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glassmorphism {
+  background: rgba(26, 26, 64, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
