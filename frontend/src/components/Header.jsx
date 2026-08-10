@@ -35,7 +35,7 @@ export default function Header({ onStartQuiz }) {
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <span className="font-display-lg text-title-md font-bold text-deep-indigo dark:text-surface-white tracking-tight flex items-center">
-              WayForward 
+              UnCharted
               <span className="material-symbols-outlined ml-1 text-coral-pulse animate-pulse">arrow_forward_ios</span>
             </span>
           </div>
@@ -59,7 +59,7 @@ export default function Header({ onStartQuiz }) {
           {/* Right Actions */}
           <div className="flex items-center gap-3 md:gap-4">
             {/* Theme Toggle Button */}
-            <button 
+            <button
               onClick={toggleTheme}
               className="w-10 h-10 rounded-xl bg-surface-container dark:bg-white/10 flex items-center justify-center text-deep-indigo dark:text-surface-white hover:scale-105 active:scale-95 transition-all"
               aria-label="Toggle Theme"
@@ -74,7 +74,7 @@ export default function Header({ onStartQuiz }) {
               Log In
             </a>
 
-            <button 
+            <button
               onClick={onStartQuiz}
               className="sunrise-gradient text-on-primary font-label-md text-label-md px-5 py-2.5 md:px-6 md:py-3 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98]"
             >
@@ -83,7 +83,7 @@ export default function Header({ onStartQuiz }) {
             </button>
 
             {/* Hamburger Menu (Mobile) */}
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="block md:hidden w-10 h-10 rounded-xl bg-surface-container dark:bg-white/10 flex items-center justify-center text-deep-indigo dark:text-surface-white"
               aria-label="Toggle Mobile Menu"
@@ -98,7 +98,7 @@ export default function Header({ onStartQuiz }) {
 
       {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-40 bg-deep-indigo/40 backdrop-blur-sm md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
@@ -109,29 +109,29 @@ export default function Header({ onStartQuiz }) {
         <div className="flex flex-col gap-6 h-full justify-between">
           <div className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-wider text-on-surface-variant dark:text-surface-variant/60 font-bold mb-2">Navigation</span>
-            <a 
-              className="font-title-md text-lg text-primary dark:text-coral-pulse font-semibold" 
+            <a
+              className="font-title-md text-lg text-primary dark:text-coral-pulse font-semibold"
               href="#career-quiz"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Career Path
             </a>
-            <a 
-              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" 
+            <a
+              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors"
               href="#how-it-works"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Degrees
             </a>
-            <a 
-              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" 
+            <a
+              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors"
               href="#how-it-works"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Community
             </a>
-            <a 
-              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" 
+            <a
+              className="font-title-md text-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors"
               href="#cta-section"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -143,7 +143,7 @@ export default function Header({ onStartQuiz }) {
             <a className="font-label-md text-label-md text-center py-3 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">
               Log In
             </a>
-            <button 
+            <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 onStartQuiz();
