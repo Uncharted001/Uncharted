@@ -35,7 +35,7 @@ export default function Header({ onStartQuiz }) {
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <span className="font-display-lg text-title-md font-bold text-deep-indigo dark:text-surface-white tracking-tight flex items-center">
-              UnCharted
+              <span className='text-coral-pulse'>Un</span>Charted
               <span className="material-symbols-outlined ml-1 text-coral-pulse animate-pulse">arrow_forward_ios</span>
             </span>
           </div>
