@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Header({ onStartQuiz }) {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
 
   // Initialize theme based on preference or system settings
   useEffect(() => {
@@ -24,7 +33,7 @@ export default function Header({ onStartQuiz }) {
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
@@ -69,10 +78,27 @@ export default function Header({ onStartQuiz }) {
               </span>
             </button>
 
-            {/* Desktop Action */}
-            <a className="hidden md:block font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 mr-2" href="#">
-              Log In
-            </a>
+            {/* Desktop: Auth actions */}
+            {user ? (
+              <div className="hidden md:flex items-center gap-3">
+                <span className="text-label-md text-on-surface-variant dark:text-surface-variant font-medium">
+                  Hi, {user.name.split(' ')[0]} 👋
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="text-label-md text-on-surface-variant dark:text-surface-variant hover:text-error dark:hover:text-error transition-colors duration-200"
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <Link
+                className="hidden md:block font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 mr-2"
+                to="/login"
+              >
+                Log In
+              </Link>
+            )}
 
             <button
               onClick={onStartQuiz}
@@ -140,9 +166,27 @@ export default function Header({ onStartQuiz }) {
           </div>
 
           <div className="flex flex-col gap-4 border-t border-surface-container-highest dark:border-white/10 pt-6 mb-10">
-            <a className="font-label-md text-label-md text-center py-3 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">
-              Log In
-            </a>
+            {user ? (
+              <>
+                <p className="text-label-md text-center text-on-surface-variant dark:text-surface-variant">
+                  Signed in as <span className="font-bold text-deep-indigo dark:text-surface-white">{user.name.split(' ')[0]}</span>
+                </p>
+                <button
+                  onClick={() => { setIsMobileMenuOpen(false); handleLogout(); }}
+                  className="font-label-md text-label-md text-center py-3 text-error hover:opacity-80 transition-opacity duration-200 border border-error/30 rounded-xl"
+                >
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <Link
+                className="font-label-md text-label-md text-center py-3 text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200"
+                to="/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Log In
+              </Link>
+            )}
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
